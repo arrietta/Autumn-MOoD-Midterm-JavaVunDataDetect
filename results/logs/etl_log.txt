@@ -1,0 +1,7 @@
+2026-10-30T14:52:25+00:00  extract   24288 rows from 6 jsonl files
+2026-10-30T14:52:25+00:00  transform invalid label 0, status/label mismatch 0, empty code 0 -> dropped 0
+2026-10-30T14:52:25+00:00  transform same code with conflicting labels dropped 11
+2026-10-30T14:52:25+00:00  transform rows whose code also appears in another split (leakage) 76
+2026-10-30T14:52:25+00:00  transform normalized-code duplicates removed 72
+2026-10-30T14:52:25+00:00  transform 24288 -> 24205 rows
+2026-10-30T14:52:26+00:00  load      {"dim_dataset": 2, "dim_commit": 839, "dim_cwe": 89, "dim_function": 22878, "fact_sample": 24205}

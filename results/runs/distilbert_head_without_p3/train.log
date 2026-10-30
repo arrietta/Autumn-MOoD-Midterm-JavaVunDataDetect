@@ -1,0 +1,12 @@
+16:13:19  run distilbert_head_without_p3 on mps: train 809 (pos 49.69%), val 271, test 251
+16:13:19  params trainable 66,955,010 / total 66,955,010 (100.00%), pos weight 1.01, truncated at 256 tokens: 58.6% of train
+16:13:37  epoch 1 step 50/306 loss 0.7000 (0.37s/step)
+16:13:55  epoch 1 step 100/306 loss 0.6981 (0.36s/step)
+16:13:59  epoch 1 done: val ROC-AUC 0.5660  PR-AUC 0.5758
+16:14:16  epoch 2 step 150/306 loss 0.6932 (0.38s/step)
+16:14:32  epoch 2 step 200/306 loss 0.6984 (0.37s/step)
+16:14:37  epoch 2 done: val ROC-AUC 0.5565  PR-AUC 0.5670
+16:14:52  epoch 3 step 250/306 loss 0.6919 (0.37s/step)
+16:15:10  epoch 3 step 300/306 loss 0.6954 (0.37s/step)
+16:15:15  epoch 3 done: val ROC-AUC 0.5513  PR-AUC 0.5657
+16:15:19  TEST {"threshold": 0.51, "accuracy": 0.5498, "balanced_accuracy": 0.5509, "precision": 0.5333, "recall": 0.5902, "f1": 0.5603, "roc_auc": 0.5684, "pr_auc": 0.5513, "mcc": 0.102, "tn": 66, "fp": 63, "fn": 50, "tp": 72, "majority_baseline_accuracy": 0.5139}

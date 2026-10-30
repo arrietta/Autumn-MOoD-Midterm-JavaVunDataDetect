@@ -1,0 +1,22 @@
+Technical issues encountered (Group 6) and how they were handled — measured on Apple M5, 16 GB, PyTorch 2.15 MPS
+
+1) Memory: batch 16 x 512 tokens, CodeBERT + LoRA (first full run, 2026-10-30 14:29)
+   - no progress line after 14 min (< 50 steps -> > 17 s/step); system swap 7.1 GB used, 12.3 M swap-outs
+   - probe (6 steps, synthetic batch, src/train.py model):
+       bs=8  L=512 ckpt=False: 0.89 s/step, MPS memory 6.1 GB
+       bs=8  L=512 ckpt=True : 1.32 s/step, MPS memory 2.1 GB
+       bs=16 L=256 ckpt=False: 0.77 s/step, MPS memory 5.1 GB
+       bs=4  L=512 ckpt=False: 0.44 s/step, MPS memory 4.1 GB
+   - decision: batch 8 x 512 for CodeBERT (0.40-0.70 s/step, 61 min for 3 epochs)
+
+2) Network: pip download of torch at 10-90 KB/s (138.6 MB wheel); HF weights similar
+   - decision: parallel HTTP range download (8-10 connections) -> ~1.9 MB/s; SHA-256 of every file logged
+
+3) Supply chain: microsoft/codebert-base exists only as pickle-based pytorch_model.bin (no safetensors)
+   - decision: pinned SHA-256 (provenance_sha256.txt), loaded with transformers 5 safe loader (weights_only)
+
+4) Time budget: alternative and balanced-set runs shortened (DistilBERT 2 epochs at 256 tokens on with_p3;
+   3 epochs on without_p3) to keep the full pipeline under ~1.5 h.
+
+5) Threshold 0.5 meaningless: CodeBERT probabilities are low after class-weighted training; at 0.5 it flags
+   nothing (accuracy 97.4% = majority class, recall 0). Thresholds are therefore chosen on validation.

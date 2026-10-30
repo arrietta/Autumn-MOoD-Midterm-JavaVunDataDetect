@@ -1,0 +1,22 @@
+{
+  "run_id": "distilbert_head_with_p3",
+  "model": "distilbert_head",
+  "data": "with_p3",
+  "device": "mps",
+  "seed": 42,
+  "hf_name": "distilbert/distilbert-base-uncased",
+  "lora": null,
+  "lr": 3e-05,
+  "epochs": 2,
+  "batch_size": 8,
+  "max_len": 256,
+  "train_rows": 13214,
+  "val_rows": 5115,
+  "test_rows": 4545,
+  "train_pos_rate": 0.02989253821704253,
+  "class_weight_pos": 5.696767904431602,
+  "trainable_params": 66955010,
+  "total_params": 66955010,
+  "truncated_train_%": 17.24,
+  "torch": "2.15.0"
+}

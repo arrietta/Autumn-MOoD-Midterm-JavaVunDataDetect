@@ -1,0 +1,10 @@
+# Provenance of external artefacts (recorded 2026-10-30T09:29Z)
+source_dataset=https://github.com/rmusab/vul-llm-finetune/tree/main/Datasets
+76258098f9f0036daf00184b073502d3d161b322865220b4914e134e940b7895  data/raw/with_p3/test.jsonl
+9420850dbb55d850fed9d367fde7bf90d604c0877a25abedecd078e47641bbf7  data/raw/with_p3/train.jsonl
+1f209e0bd7c82e9b6a006055b04ea3f7ee7f2ca074b46090e21410d465e09417  data/raw/with_p3/valid.jsonl
+9000c317f9ebf9c32c606b24e7c34dbcb67fa38049a46fc9e96e0c5892a1f8fe  data/raw/without_p3/test.jsonl
+5e7ee29f3014468b0ffbaf3e3186c7e150b04ed7e40a2dce01cd58bb296b354c  data/raw/without_p3/train.jsonl
+2fb274ee086cff88633d2b787c3b6deabdd2f96f0a79ceb566be4b0229c7668a  data/raw/without_p3/valid.jsonl
+28b61fd8fa069f6bc966f4cb9572a4026ab2a784fca8fb224020d91b744e32d6  models/hf/codebert-base/pytorch_model.bin
+5e3f1108e3cb34ee048634875d8482665b65ac713291a7e32396fb18f6ff0063  models/hf/distilbert-base-uncased/model.safetensors

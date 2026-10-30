@@ -1,0 +1,30 @@
+{
+  "run_id": "codebert_lora_without_p3",
+  "model": "codebert_lora",
+  "data": "without_p3",
+  "device": "mps",
+  "seed": 42,
+  "hf_name": "microsoft/codebert-base",
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.1,
+    "target_modules": [
+      "query",
+      "value"
+    ]
+  },
+  "lr": 0.0003,
+  "epochs": 3,
+  "batch_size": 8,
+  "max_len": 512,
+  "train_rows": 809,
+  "val_rows": 271,
+  "test_rows": 251,
+  "train_pos_rate": 0.4969097651421508,
+  "class_weight_pos": 1.006199687410642,
+  "trainable_params": 1181954,
+  "total_params": 125829124,
+  "truncated_train_%": 50.68,
+  "torch": "2.15.0"
+}

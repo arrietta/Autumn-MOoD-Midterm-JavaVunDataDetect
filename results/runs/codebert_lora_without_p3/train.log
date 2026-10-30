@@ -1,0 +1,12 @@
+16:07:26  run codebert_lora_without_p3 on mps: train 809 (pos 49.69%), val 271, test 251
+16:07:26  params trainable 1,181,954 / total 125,829,124 (0.94%), pos weight 1.01, truncated at 512 tokens: 50.7% of train
+16:08:13  epoch 1 step 50/306 loss 0.7246 (0.94s/step)
+16:09:02  epoch 1 step 100/306 loss 0.7232 (0.96s/step)
+16:09:17  epoch 1 done: val ROC-AUC 0.4935  PR-AUC 0.5201
+16:10:03  epoch 2 step 150/306 loss 0.7031 (1.04s/step)
+16:10:51  epoch 2 step 200/306 loss 0.7162 (1.02s/step)
+16:11:09  epoch 2 done: val ROC-AUC 0.5361  PR-AUC 0.5391
+16:11:51  epoch 3 step 250/306 loss 0.7063 (1.06s/step)
+16:12:44  epoch 3 step 300/306 loss 0.6970 (1.06s/step)
+16:13:03  epoch 3 done: val ROC-AUC 0.5071  PR-AUC 0.5337
+16:13:15  TEST {"threshold": 0.3736, "accuracy": 0.4861, "balanced_accuracy": 0.4858, "precision": 0.4715, "recall": 0.4754, "f1": 0.4735, "roc_auc": 0.5058, "pr_auc": 0.5165, "mcc": -0.0285, "tn": 64, "fp": 65, "fn": 64, "tp": 58, "majority_baseline_accuracy": 0.5139}

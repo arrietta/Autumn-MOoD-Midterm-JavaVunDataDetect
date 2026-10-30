@@ -1,0 +1,384 @@
+[extract] 24288 rows from 6 jsonl files
+[transform] invalid label 0, status/label mismatch 0, empty code 0 -> dropped 0
+[transform] same code with conflicting labels dropped 11
+[transform] rows whose code also appears in another split (leakage) 76
+[transform] normalized-code duplicates removed 72
+[transform] 24288 -> 24205 rows
+[load] {"dim_dataset": 2, "dim_commit": 839, "dim_cwe": 89, "dim_function": 22878, "fact_sample": 24205}
+{
+ "before_etl": {
+  "with_p3": {
+   "rows": 22954,
+   "completeness_%": 100.0,
+   "unique_body_hash_%": 100.0,
+   "unique_normalized_code_%": 99.669,
+   "label_validity_%": 100.0,
+   "status_label_consistency_%": 100.0,
+   "cwe_proper_code_%": 86.05,
+   "cwe_nvd_placeholder_%": 13.95,
+   "commits_in_more_than_one_split": 0,
+   "code_in_more_than_one_split": 37,
+   "same_code_conflicting_labels": 4,
+   "positive_%": 2.81,
+   "neg_per_pos": 34.5
+  },
+  "without_p3": {
+   "rows": 1334,
+   "completeness_%": 100.0,
+   "unique_body_hash_%": 100.0,
+   "unique_normalized_code_%": 99.85,
+   "label_validity_%": 100.0,
+   "status_label_consistency_%": 100.0,
+   "cwe_proper_code_%": 86.96,
+   "cwe_nvd_placeholder_%": 13.04,
+   "commits_in_more_than_one_split": 0,
+   "code_in_more_than_one_split": 2,
+   "same_code_conflicting_labels": 1,
+   "positive_%": 49.85,
+   "neg_per_pos": 1.0
+  }
+ },
+ "after_etl": {
+  "with_p3": {
+   "rows": 22874,
+   "completeness_%": 100.0,
+   "unique_body_hash_%": 100.0,
+   "unique_normalized_code_%": 100.0,
+   "label_validity_%": 100.0,
+   "status_label_consistency_%": 100.0,
+   "cwe_proper_code_%": 86.03,
+   "cwe_nvd_placeholder_%": 13.97,
+   "commits_in_more_than_one_split": 0,
+   "code_in_more_than_one_split": 0,
+   "same_code_conflicting_labels": 0,
+   "positive_%": 2.8,
+   "neg_per_pos": 34.7
+  },
+  "without_p3": {
+   "rows": 1331,
+   "completeness_%": 100.0,
+   "unique_body_hash_%": 100.0,
+   "unique_normalized_code_%": 100.0,
+   "label_validity_%": 100.0,
+   "status_label_consistency_%": 100.0,
+   "cwe_proper_code_%": 86.93,
+   "cwe_nvd_placeholder_%": 13.07,
+   "commits_in_more_than_one_split": 0,
+   "code_in_more_than_one_split": 0,
+   "same_code_conflicting_labels": 0,
+   "positive_%": 49.81,
+   "neg_per_pos": 1.0
+  }
+ }
+}
+W1030 14:45:11.012000 7320 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 197/197 [00:00<00:00, 56984.68it/s]
+[transformers] [1mRobertaForSequenceClassification LOAD REPORT[0m from: models/hf/codebert-base
+Key                        | Status     | 
+---------------------------+------------+-
+pooler.dense.weight        | UNEXPECTED | 
+pooler.dense.bias          | UNEXPECTED | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+14:45:12  run codebert_lora_with_p3 on mps: train 13214 (pos 2.99%), val 5115, test 4545
+14:45:12  params trainable 1,181,954 / total 125,829,124 (0.94%), pos weight 5.70, truncated at 512 tokens: 13.5% of train
+14:45:33  epoch 1 step 50/4956 loss 0.4887 (0.42s/step)
+14:45:52  epoch 1 step 100/4956 loss 0.4838 (0.40s/step)
+14:46:11  epoch 1 step 150/4956 loss 0.3967 (0.40s/step)
+14:47:19  epoch 1 step 200/4956 loss 0.4222 (0.64s/step)
+14:47:50  epoch 1 step 250/4956 loss 0.4944 (0.63s/step)
+14:48:11  epoch 1 step 300/4956 loss 0.4209 (0.60s/step)
+14:48:34  epoch 1 step 350/4956 loss 0.4766 (0.58s/step)
+14:48:55  epoch 1 step 400/4956 loss 0.3287 (0.56s/step)
+14:49:22  epoch 1 step 450/4956 loss 0.5824 (0.56s/step)
+14:49:53  epoch 1 step 500/4956 loss 0.3811 (0.56s/step)
+14:50:18  epoch 1 step 550/4956 loss 0.5012 (0.56s/step)
+14:50:41  epoch 1 step 600/4956 loss 0.4121 (0.55s/step)
+14:51:11  epoch 1 step 650/4956 loss 0.5048 (0.55s/step)
+14:51:36  epoch 1 step 700/4956 loss 0.4315 (0.55s/step)
+14:51:56  epoch 1 step 750/4956 loss 0.3492 (0.54s/step)
+14:52:27  epoch 1 step 800/4956 loss 0.4794 (0.54s/step)
+14:52:53  epoch 1 step 850/4956 loss 0.3279 (0.54s/step)
+14:53:22  epoch 1 step 900/4956 loss 0.3171 (0.54s/step)
+14:53:45  epoch 1 step 950/4956 loss 0.4233 (0.54s/step)
+14:54:13  epoch 1 step 1000/4956 loss 0.6030 (0.54s/step)
+14:54:33  epoch 1 step 1050/4956 loss 0.1470 (0.53s/step)
+14:55:01  epoch 1 step 1100/4956 loss 0.4495 (0.54s/step)
+14:55:27  epoch 1 step 1150/4956 loss 0.4264 (0.54s/step)
+14:55:59  epoch 1 step 1200/4956 loss 0.4707 (0.54s/step)
+14:56:26  epoch 1 step 1250/4956 loss 0.3786 (0.54s/step)
+14:56:54  epoch 1 step 1300/4956 loss 0.4105 (0.54s/step)
+14:57:24  epoch 1 step 1350/4956 loss 0.4004 (0.54s/step)
+15:03:27  epoch 1 step 1400/4956 loss 0.3783 (0.78s/step)
+15:03:45  epoch 1 step 1450/4956 loss 0.5452 (0.77s/step)
+15:04:05  epoch 1 step 1500/4956 loss 0.2118 (0.76s/step)
+15:04:29  epoch 1 step 1550/4956 loss 0.4463 (0.75s/step)
+15:04:46  epoch 1 step 1600/4956 loss 0.4315 (0.73s/step)
+15:05:07  epoch 1 step 1650/4956 loss 0.4445 (0.72s/step)
+15:06:48  epoch 1 done: val ROC-AUC 0.8073  PR-AUC 0.0973
+15:07:15  epoch 2 step 1700/4956 loss 0.2945 (0.78s/step)
+15:07:40  epoch 2 step 1750/4956 loss 0.4077 (0.77s/step)
+15:08:12  epoch 2 step 1800/4956 loss 0.4982 (0.77s/step)
+15:08:38  epoch 2 step 1850/4956 loss 0.4823 (0.76s/step)
+15:09:06  epoch 2 step 1900/4956 loss 0.5166 (0.75s/step)
+15:09:35  epoch 2 step 1950/4956 loss 0.3551 (0.75s/step)
+15:10:08  epoch 2 step 2000/4956 loss 0.4051 (0.75s/step)
+15:10:34  epoch 2 step 2050/4956 loss 0.7247 (0.74s/step)
+15:10:53  epoch 2 step 2100/4956 loss 0.3206 (0.73s/step)
+15:11:19  epoch 2 step 2150/4956 loss 0.4175 (0.73s/step)
+15:11:42  epoch 2 step 2200/4956 loss 0.3051 (0.72s/step)
+15:12:15  epoch 2 step 2250/4956 loss 0.4036 (0.72s/step)
+15:12:39  epoch 2 step 2300/4956 loss 0.3350 (0.72s/step)
+15:12:59  epoch 2 step 2350/4956 loss 0.3706 (0.71s/step)
+15:14:14  epoch 2 step 2400/4956 loss 0.4479 (0.73s/step)
+15:14:34  epoch 2 step 2450/4956 loss 0.2741 (0.72s/step)
+15:14:53  epoch 2 step 2500/4956 loss 0.3728 (0.71s/step)
+15:15:20  epoch 2 step 2550/4956 loss 0.4297 (0.71s/step)
+15:15:53  epoch 2 step 2600/4956 loss 0.3582 (0.71s/step)
+15:16:28  epoch 2 step 2650/4956 loss 0.4592 (0.71s/step)
+15:16:54  epoch 2 step 2700/4956 loss 0.3912 (0.70s/step)
+15:17:24  epoch 2 step 2750/4956 loss 0.3970 (0.70s/step)
+15:17:55  epoch 2 step 2800/4956 loss 0.5397 (0.70s/step)
+15:18:41  epoch 2 step 2850/4956 loss 0.3806 (0.70s/step)
+15:19:12  epoch 2 step 2900/4956 loss 0.2676 (0.70s/step)
+15:20:09  epoch 2 step 2950/4956 loss 0.3775 (0.71s/step)
+15:20:45  epoch 2 step 3000/4956 loss 0.3375 (0.71s/step)
+15:21:26  epoch 2 step 3050/4956 loss 0.5505 (0.71s/step)
+15:21:52  epoch 2 step 3100/4956 loss 0.2707 (0.71s/step)
+15:22:11  epoch 2 step 3150/4956 loss 0.3371 (0.70s/step)
+15:22:41  epoch 2 step 3200/4956 loss 0.3239 (0.70s/step)
+15:23:11  epoch 2 step 3250/4956 loss 0.3009 (0.70s/step)
+15:23:40  epoch 2 step 3300/4956 loss 0.3690 (0.70s/step)
+15:25:31  epoch 2 done: val ROC-AUC 0.8324  PR-AUC 0.1113
+15:26:00  epoch 3 step 3350/4956 loss 0.2464 (0.73s/step)
+15:26:27  epoch 3 step 3400/4956 loss 0.2923 (0.73s/step)
+15:26:52  epoch 3 step 3450/4956 loss 0.1835 (0.72s/step)
+15:27:18  epoch 3 step 3500/4956 loss 0.5011 (0.72s/step)
+15:28:17  epoch 3 step 3550/4956 loss 0.3637 (0.73s/step)
+15:28:56  epoch 3 step 3600/4956 loss 0.5074 (0.73s/step)
+15:29:21  epoch 3 step 3650/4956 loss 0.2265 (0.73s/step)
+15:29:47  epoch 3 step 3700/4956 loss 0.4072 (0.72s/step)
+15:30:13  epoch 3 step 3750/4956 loss 0.2416 (0.72s/step)
+15:30:45  epoch 3 step 3800/4956 loss 0.3771 (0.72s/step)
+15:31:06  epoch 3 step 3850/4956 loss 0.4768 (0.72s/step)
+15:31:36  epoch 3 step 3900/4956 loss 0.3913 (0.71s/step)
+15:32:03  epoch 3 step 3950/4956 loss 0.3642 (0.71s/step)
+15:32:34  epoch 3 step 4000/4956 loss 0.2920 (0.71s/step)
+15:32:59  epoch 3 step 4050/4956 loss 0.3471 (0.71s/step)
+15:33:25  epoch 3 step 4100/4956 loss 0.4257 (0.71s/step)
+15:33:59  epoch 3 step 4150/4956 loss 0.4829 (0.71s/step)
+15:34:36  epoch 3 step 4200/4956 loss 0.3173 (0.71s/step)
+15:35:11  epoch 3 step 4250/4956 loss 0.3827 (0.71s/step)
+15:35:42  epoch 3 step 4300/4956 loss 0.4969 (0.70s/step)
+15:36:06  epoch 3 step 4350/4956 loss 0.1497 (0.70s/step)
+15:36:30  epoch 3 step 4400/4956 loss 0.2970 (0.70s/step)
+15:36:54  epoch 3 step 4450/4956 loss 0.3050 (0.70s/step)
+15:38:18  epoch 3 step 4500/4956 loss 0.3717 (0.71s/step)
+15:38:56  epoch 3 step 4550/4956 loss 0.4207 (0.71s/step)
+15:39:22  epoch 3 step 4600/4956 loss 0.3132 (0.71s/step)
+15:39:50  epoch 3 step 4650/4956 loss 0.3235 (0.71s/step)
+15:40:17  epoch 3 step 4700/4956 loss 0.2557 (0.70s/step)
+15:40:49  epoch 3 step 4750/4956 loss 0.3833 (0.70s/step)
+15:41:16  epoch 3 step 4800/4956 loss 0.4259 (0.70s/step)
+15:41:41  epoch 3 step 4850/4956 loss 0.3198 (0.70s/step)
+15:42:03  epoch 3 step 4900/4956 loss 0.2455 (0.70s/step)
+15:42:32  epoch 3 step 4950/4956 loss 0.3770 (0.69s/step)
+15:44:20  epoch 3 done: val ROC-AUC 0.8427  PR-AUC 0.1194
+15:46:34  TEST {"threshold": 0.0096, "accuracy": 0.7212, "balanced_accuracy": 0.7612, "precision": 0.0703, "recall": 0.8034, "f1": 0.1292, "roc_auc": 0.8379, "pr_auc": 0.109, "mcc": 0.1815, "tn": 3184, "fp": 1244, "fn": 23, "tp": 94, "majority_baseline_accuracy": 0.9743}
+W1030 15:46:40.166000 10692 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+W1030 15:47:57.809000 10773 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 197/197 [00:00<00:00, 62577.85it/s]
+[transformers] [1mRobertaForSequenceClassification LOAD REPORT[0m from: models/hf/codebert-base
+Key                        | Status     | 
+---------------------------+------------+-
+pooler.dense.bias          | UNEXPECTED | 
+pooler.dense.weight        | UNEXPECTED | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+15:51:01  RE-EVAL TEST alert {"threshold": 0.1016, "accuracy": 0.9223, "balanced_accuracy": 0.6439, "precision": 0.1289, "recall": 0.3504, "f1": 0.1885, "roc_auc": 0.8379, "pr_auc": 0.109, "mcc": 0.1787, "tn": 4151, "fp": 277, "fn": 76, "tp": 41, "majority_baseline_accuracy": 0.9743}
+15:51:01  RE-EVAL TEST triage {"threshold": 0.0096, "accuracy": 0.7212, "balanced_accuracy": 0.7612, "precision": 0.0703, "recall": 0.8034, "f1": 0.1292, "roc_auc": 0.8379, "pr_auc": 0.109, "mcc": 0.1815, "tn": 3184, "fp": 1244, "fn": 23, "tp": 94, "majority_baseline_accuracy": 0.9743}
+W1030 15:51:04.276000 10795 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 100/100 [00:00<00:00, 8518.77it/s]
+[transformers] [1mDistilBertForSequenceClassification LOAD REPORT[0m from: models/hf/distilbert-base-uncased
+Key                     | Status     | 
+------------------------+------------+-
+vocab_projector.bias    | UNEXPECTED | 
+vocab_transform.bias    | UNEXPECTED | 
+vocab_layer_norm.weight | UNEXPECTED | 
+vocab_transform.weight  | UNEXPECTED | 
+vocab_layer_norm.bias   | UNEXPECTED | 
+pre_classifier.weight   | MISSING    | 
+classifier.bias         | MISSING    | 
+classifier.weight       | MISSING    | 
+pre_classifier.bias     | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+15:51:05  run distilbert_head_with_p3 on mps: train 13214 (pos 2.99%), val 5115, test 4545
+15:51:05  params trainable 66,955,010 / total 66,955,010 (100.00%), pos weight 5.70, truncated at 256 tokens: 17.2% of train
+15:51:19  epoch 1 step 50/3304 loss 0.5370 (0.28s/step)
+15:51:31  epoch 1 step 100/3304 loss 0.4275 (0.26s/step)
+15:51:43  epoch 1 step 150/3304 loss 0.4279 (0.25s/step)
+15:51:55  epoch 1 step 200/3304 loss 0.3779 (0.25s/step)
+15:52:06  epoch 1 step 250/3304 loss 0.3606 (0.24s/step)
+15:52:15  epoch 1 step 300/3304 loss 0.3037 (0.23s/step)
+15:52:25  epoch 1 step 350/3304 loss 0.2740 (0.23s/step)
+15:52:34  epoch 1 step 400/3304 loss 0.5095 (0.22s/step)
+15:52:46  epoch 1 step 450/3304 loss 0.4131 (0.22s/step)
+15:52:58  epoch 1 step 500/3304 loss 0.4323 (0.22s/step)
+15:53:08  epoch 1 step 550/3304 loss 0.4187 (0.22s/step)
+15:53:18  epoch 1 step 600/3304 loss 0.3708 (0.22s/step)
+15:53:29  epoch 1 step 650/3304 loss 0.2294 (0.22s/step)
+15:53:39  epoch 1 step 700/3304 loss 0.3237 (0.22s/step)
+15:53:49  epoch 1 step 750/3304 loss 0.3428 (0.22s/step)
+15:53:59  epoch 1 step 800/3304 loss 0.3628 (0.22s/step)
+15:54:08  epoch 1 step 850/3304 loss 0.4102 (0.22s/step)
+15:54:19  epoch 1 step 900/3304 loss 0.5376 (0.22s/step)
+15:54:29  epoch 1 step 950/3304 loss 0.3579 (0.21s/step)
+15:54:40  epoch 1 step 1000/3304 loss 0.4252 (0.21s/step)
+15:54:49  epoch 1 step 1050/3304 loss 0.3960 (0.21s/step)
+15:55:00  epoch 1 step 1100/3304 loss 0.4825 (0.21s/step)
+15:55:10  epoch 1 step 1150/3304 loss 0.3852 (0.21s/step)
+15:55:22  epoch 1 step 1200/3304 loss 0.5122 (0.21s/step)
+15:55:32  epoch 1 step 1250/3304 loss 0.2567 (0.21s/step)
+15:55:42  epoch 1 step 1300/3304 loss 0.4640 (0.21s/step)
+15:55:53  epoch 1 step 1350/3304 loss 0.5234 (0.21s/step)
+15:56:04  epoch 1 step 1400/3304 loss 0.4707 (0.21s/step)
+15:56:14  epoch 1 step 1450/3304 loss 0.4139 (0.21s/step)
+15:56:25  epoch 1 step 1500/3304 loss 0.2550 (0.21s/step)
+15:56:37  epoch 1 step 1550/3304 loss 0.3639 (0.21s/step)
+16:01:02  epoch 1 step 1600/3304 loss 0.4040 (0.37s/step)
+16:01:09  epoch 1 step 1650/3304 loss 0.4636 (0.37s/step)
+16:01:28  epoch 1 done: val ROC-AUC 0.8113  PR-AUC 0.0861
+16:01:36  epoch 2 step 1700/3304 loss 0.3092 (0.37s/step)
+16:01:43  epoch 2 step 1750/3304 loss 0.3320 (0.36s/step)
+16:01:52  epoch 2 step 1800/3304 loss 0.4728 (0.36s/step)
+16:01:59  epoch 2 step 1850/3304 loss 0.3801 (0.35s/step)
+16:02:07  epoch 2 step 1900/3304 loss 0.3204 (0.35s/step)
+16:02:15  epoch 2 step 1950/3304 loss 0.5368 (0.34s/step)
+16:02:24  epoch 2 step 2000/3304 loss 0.3836 (0.34s/step)
+16:02:31  epoch 2 step 2050/3304 loss 0.3946 (0.33s/step)
+16:02:38  epoch 2 step 2100/3304 loss 0.2226 (0.33s/step)
+16:02:46  epoch 2 step 2150/3304 loss 0.4450 (0.33s/step)
+16:02:53  epoch 2 step 2200/3304 loss 0.2113 (0.32s/step)
+16:03:01  epoch 2 step 2250/3304 loss 0.2680 (0.32s/step)
+16:03:09  epoch 2 step 2300/3304 loss 0.2085 (0.31s/step)
+16:03:16  epoch 2 step 2350/3304 loss 0.3434 (0.31s/step)
+16:03:26  epoch 2 step 2400/3304 loss 0.4698 (0.31s/step)
+16:03:36  epoch 2 step 2450/3304 loss 0.3301 (0.31s/step)
+16:03:44  epoch 2 step 2500/3304 loss 0.4023 (0.30s/step)
+16:03:54  epoch 2 step 2550/3304 loss 0.2873 (0.30s/step)
+16:04:05  epoch 2 step 2600/3304 loss 0.3210 (0.30s/step)
+16:04:15  epoch 2 step 2650/3304 loss 0.4298 (0.30s/step)
+16:04:24  epoch 2 step 2700/3304 loss 0.2776 (0.30s/step)
+16:04:34  epoch 2 step 2750/3304 loss 0.3809 (0.29s/step)
+16:04:45  epoch 2 step 2800/3304 loss 0.1870 (0.29s/step)
+16:04:55  epoch 2 step 2850/3304 loss 0.4865 (0.29s/step)
+16:05:05  epoch 2 step 2900/3304 loss 0.3915 (0.29s/step)
+16:05:14  epoch 2 step 2950/3304 loss 0.3169 (0.29s/step)
+16:05:24  epoch 2 step 3000/3304 loss 0.1204 (0.29s/step)
+16:05:37  epoch 2 step 3050/3304 loss 0.4336 (0.29s/step)
+16:05:47  epoch 2 step 3100/3304 loss 0.3355 (0.28s/step)
+16:05:56  epoch 2 step 3150/3304 loss 0.3020 (0.28s/step)
+16:06:06  epoch 2 step 3200/3304 loss 0.3072 (0.28s/step)
+16:06:16  epoch 2 step 3250/3304 loss 0.6179 (0.28s/step)
+16:06:26  epoch 2 step 3300/3304 loss 0.6163 (0.28s/step)
+16:06:53  epoch 2 done: val ROC-AUC 0.8233  PR-AUC 0.1003
+16:07:22  TEST {"threshold": 0.0246, "accuracy": 0.8869, "balanced_accuracy": 0.6674, "precision": 0.1022, "recall": 0.4359, "f1": 0.1656, "roc_auc": 0.8145, "pr_auc": 0.1192, "mcc": 0.1696, "tn": 3980, "fp": 448, "fn": 66, "tp": 51, "majority_baseline_accuracy": 0.9743}
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.69it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  8.68it/s]
+W1030 16:07:26.130000 10979 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 197/197 [00:00<00:00, 72909.02it/s]
+[transformers] [1mRobertaForSequenceClassification LOAD REPORT[0m from: models/hf/codebert-base
+Key                        | Status     | 
+---------------------------+------------+-
+pooler.dense.weight        | UNEXPECTED | 
+pooler.dense.bias          | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+16:07:26  run codebert_lora_without_p3 on mps: train 809 (pos 49.69%), val 271, test 251
+16:07:26  params trainable 1,181,954 / total 125,829,124 (0.94%), pos weight 1.01, truncated at 512 tokens: 50.7% of train
+16:08:13  epoch 1 step 50/306 loss 0.7246 (0.94s/step)
+16:09:02  epoch 1 step 100/306 loss 0.7232 (0.96s/step)
+16:09:17  epoch 1 done: val ROC-AUC 0.4935  PR-AUC 0.5201
+16:10:03  epoch 2 step 150/306 loss 0.7031 (1.04s/step)
+16:10:51  epoch 2 step 200/306 loss 0.7162 (1.02s/step)
+16:11:09  epoch 2 done: val ROC-AUC 0.5361  PR-AUC 0.5391
+16:11:51  epoch 3 step 250/306 loss 0.7063 (1.06s/step)
+16:12:44  epoch 3 step 300/306 loss 0.6970 (1.06s/step)
+16:13:03  epoch 3 done: val ROC-AUC 0.5071  PR-AUC 0.5337
+16:13:15  TEST {"threshold": 0.3736, "accuracy": 0.4861, "balanced_accuracy": 0.4858, "precision": 0.4715, "recall": 0.4754, "f1": 0.4735, "roc_auc": 0.5058, "pr_auc": 0.5165, "mcc": -0.0285, "tn": 64, "fp": 65, "fn": 64, "tp": 58, "majority_baseline_accuracy": 0.5139}
+W1030 16:13:19.074000 11335 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 100/100 [00:00<00:00, 15071.70it/s]
+[transformers] [1mDistilBertForSequenceClassification LOAD REPORT[0m from: models/hf/distilbert-base-uncased
+Key                     | Status     | 
+------------------------+------------+-
+vocab_transform.weight  | UNEXPECTED | 
+vocab_projector.bias    | UNEXPECTED | 
+vocab_layer_norm.bias   | UNEXPECTED | 
+vocab_transform.bias    | UNEXPECTED | 
+vocab_layer_norm.weight | UNEXPECTED | 
+pre_classifier.weight   | MISSING    | 
+pre_classifier.bias     | MISSING    | 
+classifier.weight       | MISSING    | 
+classifier.bias         | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+16:13:19  run distilbert_head_without_p3 on mps: train 809 (pos 49.69%), val 271, test 251
+16:13:19  params trainable 66,955,010 / total 66,955,010 (100.00%), pos weight 1.01, truncated at 256 tokens: 58.6% of train
+16:13:37  epoch 1 step 50/306 loss 0.7000 (0.37s/step)
+16:13:55  epoch 1 step 100/306 loss 0.6981 (0.36s/step)
+16:13:59  epoch 1 done: val ROC-AUC 0.5660  PR-AUC 0.5758
+16:14:16  epoch 2 step 150/306 loss 0.6932 (0.38s/step)
+16:14:32  epoch 2 step 200/306 loss 0.6984 (0.37s/step)
+16:14:37  epoch 2 done: val ROC-AUC 0.5565  PR-AUC 0.5670
+16:14:52  epoch 3 step 250/306 loss 0.6919 (0.37s/step)
+16:15:10  epoch 3 step 300/306 loss 0.6954 (0.37s/step)
+16:15:15  epoch 3 done: val ROC-AUC 0.5513  PR-AUC 0.5657
+16:15:19  TEST {"threshold": 0.51, "accuracy": 0.5498, "balanced_accuracy": 0.5509, "precision": 0.5333, "recall": 0.5902, "f1": 0.5603, "roc_auc": 0.5684, "pr_auc": 0.5513, "mcc": 0.102, "tn": 66, "fp": 63, "fn": 50, "tp": 72, "majority_baseline_accuracy": 0.5139}
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 12.23it/s]
+   dataset             model  accuracy  majority_baseline  balanced_acc  precision  recall    f1  roc_auc  pr_auc    mcc  threshold  trainable_params  triage_threshold  triage_accuracy  triage_precision  triage_recall  triage_f1  triage_mcc  triage_tp  triage_fp  train_minutes
+   with_p3   TF-IDF + LogReg     0.966              0.974         0.650      0.327   0.316 0.322    0.870   0.214  0.304      0.693               NaN             0.681            0.966             0.333          0.325      0.329       0.312         38         76            NaN
+   with_p3       Length only     0.900              0.974         0.649      0.106   0.385 0.166    0.809   0.135  0.162      0.082               NaN             0.081            0.899             0.105          0.385      0.165       0.161         45        385            NaN
+   with_p3 DistilBERT + head     0.887              0.974         0.667      0.102   0.436 0.166    0.814   0.119  0.170      0.025        66955010.0             0.011            0.703             0.065          0.786      0.120       0.166         92       1327           16.3
+   with_p3   CodeBERT + LoRA     0.922              0.974         0.644      0.129   0.350 0.189    0.838   0.109  0.179      0.102         1181954.0             0.010            0.721             0.070          0.803      0.129       0.182         94       1244           61.4
+without_p3   TF-IDF + LogReg     0.566              0.514         0.569      0.543   0.672 0.601    0.621   0.621  0.140      0.430               NaN             0.428            0.558             0.536          0.672      0.596       0.125         82         71            NaN
+without_p3 DistilBERT + head     0.550              0.514         0.551      0.533   0.590 0.560    0.568   0.551  0.102      0.510        66955010.0             0.511            0.570             0.595          0.361      0.449       0.140         44         30            2.0
+without_p3   CodeBERT + LoRA     0.486              0.514         0.486      0.472   0.475 0.473    0.506   0.517 -0.028      0.374         1181954.0             0.373            0.494             0.481          0.516      0.498      -0.011         63         68            5.8
+without_p3       Length only     0.474              0.514         0.473      0.457   0.434 0.445    0.458   0.470 -0.054      0.081               NaN             0.474            0.514             0.500          0.057      0.103       0.007          7          7            NaN
+ALL_DONE

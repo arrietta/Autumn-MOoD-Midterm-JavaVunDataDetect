@@ -1,0 +1,7 @@
+dataset_version,split,n,pos,neg,pos_%
+with_p3,test,4545,117,4428,2.57
+with_p3,train,13214,395,12819,2.99
+with_p3,val,5115,129,4986,2.52
+without_p3,test,251,122,129,48.61
+without_p3,train,809,402,407,49.69
+without_p3,val,271,139,132,51.29
